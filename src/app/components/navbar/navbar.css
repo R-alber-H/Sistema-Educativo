@@ -1,5 +1,6 @@
-.gradient-box{
-    background: linear-gradient(to left, #8E2699, #7D4ACB);
+
+.titulo{
+font-family: 'Playwrite NO', sans-serif;
 }
 
 .navbar-nav .nav-link {
@@ -11,7 +12,8 @@
 .navbar-nav .nav-link::after {
   content: '';
   display: block;
-  height: 2px;
+  height: 1px;
+  margin-top: 5px;
   width: 100%;
   background: #fff;
   opacity: 0;              

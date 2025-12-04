@@ -1,0 +1,38 @@
+
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background-color: #1A1A1A;
+  color: white;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.logo{
+    width: 130px;
+    border-radius: 12px;
+}
+.sidebar-link.active {
+  background: #CD3301;
+  color: #eeeef3;
+  transform: translateX(5px);
+}
+
+.sidebar-link {
+    color: #c2bcbc;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+    width: 180px;
+    overflow: hidden;
+}
+
+.sidebar-link:hover {
+    color: #eeeef3;
+    background: #CD3301;
+    transform: translateX(5px);
+}
+
+.correo{
+    font-size: 13px;
+}
