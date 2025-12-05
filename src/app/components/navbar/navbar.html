@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg  gradient-box w-100 rounded-bottom-4">
+<nav class="navbar navbar-expand-lg  gradient-box w-100 border-bottom border-dark-subtle">
   <div class="container-fluid">
     <a class="navbar-brand ms-4 titulo" routerLink="/dashboard">Mi Escuela Virtual</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -9,24 +9,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link me-4" style="font-size: 14px;" routerLink="/dashboard" routerLinkActive="active">
-            <i class="bi bi-speedometer2 me-2"></i>Dashboard
-          </a>
+          <a class="nav-link me-2" routerLink="/dashboard" routerLinkActive="active">
+            <i class="bi bi-question-circle me-2 icono"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  me-4" style="font-size: 14px;" routerLink="/cursos" routerLinkActive="active">
-            <i class="bi bi-journal-bookmark me-2"></i>Cursos
-          </a>
+          <a class="nav-link  me-2" routerLink="/cursos" routerLinkActive="active">
+            <i class="bi bi-envelope me-2 icono"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-4" style="font-size: 14px;" routerLink="/profesores" routerLinkActive="active">
-            <i class="bi bi-person-badge me-2"></i>Profesores
-          </a>
+          <a class="nav-link me-2" routerLink="/profesores" routerLinkActive="active">
+            <i class="bi bi-bell me-2 icono"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-4" style="font-size: 14px;"routerLink="/alumnos" routerLinkActive="active">
-            <i class="bi bi-people me-2"></i>Alumnos
-          </a>
+          <a class="nav-link me-2 text-danger" routerLink="/profesores" routerLinkActive="active">
+            <i class="bi bi-box-arrow-down me-2 icono "></i>Cerrar Sesion</a>
         </li>
       </ul>
     </div>
