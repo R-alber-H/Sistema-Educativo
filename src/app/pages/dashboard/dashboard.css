@@ -1,0 +1,40 @@
+.datos{
+    background-color: #0F3878;
+}
+
+.panel-gradient{
+ background: linear-gradient(to top, rgb(145, 153, 161), #6A6AE6);
+}
+
+.dashboard-card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 7%);
+}
+
+.icon-circle {
+  width: 55px;
+  height: 55px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-number {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.bg-blue {
+  background: #4c86f9;
+}
+
+.bg-purple {
+  background: #7765e3;
+}
+
+.bg-orange {
+  background: #f7a648;
+}
