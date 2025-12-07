@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="column d-flex justify-content-between mt-3">
+    <h4 class="fw-semibold">Alumnos Matriculados</h4>
+    <button class="btn btn-outline-primary"><i class="bi bi-plus me-2"></i>Registrar Alumno</button>
+  </div>
+
+  <div class="mt-3">
+    <table class="table table-striped">
+      <thead>
+        <tr class="text-center">
+          <th scope="col">Codigo</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">DNI</th>
+          <th scope="col">Correo Electronico</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (alumno of alumnosRegistrados; track alumno.codigo) {
+        <tr class="text-center">
+          <th scope="row">{{alumno.codigo}}</th>
+          <td>{{alumno.nombre}}</td>
+          <td>{{alumno.dni}}</td>
+          <td>{{alumno.correo}}</td>
+          <td>
+              <div>
+              <button class="btn btn-warning btn-sm me-4"><i class="bi bi-pencil me-2"></i>Editar</button>
+              <button class="btn btn-danger btn-sm"><i class="bi bi-x-circle me-2"></i>Deshabilitar</button>
+            </div>
+          </td>
+        </tr>
+        }
+
+      </tbody>
+    </table>
+  </div>
+</div>
