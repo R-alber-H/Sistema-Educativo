@@ -9,22 +9,21 @@
         </div>
 
         <div class="col-12 col-md-6 p-4">
-          <form >
+          <form [formGroup]="formularioLogin" (ngSubmit)="login()">
             <h3 class="text-center mb-3 mt-3 fw-bold">Inicio de Sesión</h3>
             <p class="text-center text-muted mb-4">Ingrese sus datos para continuar</p>
 
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email"
-                placeholder="ejemplo@correo.com">
+              <input type="email" class="form-control" id="email" formControlName="email" placeholder="ejemplo@correo.com">
             </div>
 
             <div class="mb-3">
               <label for="password" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id="password"placeholder="********">
+              <input type="password" class="form-control" id="password" formControlName="password" placeholder="********">
             </div>
       
-            <button type="submit" class="btn btn-primary w-100" routerLink="dashboard">Iniciar Sesión</button>
+            <button type="submit" class="btn btn-primary w-100" [disabled]="formularioLogin.invalid">Iniciar Sesión</button>
           </form>
         </div>
 
