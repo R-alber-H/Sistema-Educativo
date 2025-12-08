@@ -1,7 +1,7 @@
 <div class="container " >
   <div class="column d-flex justify-content-between mt-3">
     <h4 class="fw-semibold">Cursos Registrados</h4>
-    <button class="btn btn-outline-primary"><i class="bi bi-plus me-2"></i>Crear curso</button>
+    <button class="btn btn-outline-primary" (click)="abrirModal()"><i class="bi bi-plus me-2"></i>Crear curso</button>
   </div>
 
 
@@ -33,4 +33,5 @@
       </div>
     </div>
   </div>
+  <app-modal-registrar-curso></app-modal-registrar-curso>
 </div>
