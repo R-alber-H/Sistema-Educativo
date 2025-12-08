@@ -5,17 +5,21 @@ import { Layout } from './layout/layout/layout';
 import { Cursos } from './pages/cursos/cursos';
 import { Profesores } from './pages/profesores/profesores';
 import { Alumnos } from './pages/alumnos/alumnos';
+import { authGuard } from './guard/auth-guard';
+import { hasRoleGuard } from './guard/rol-guard';
 
 export const routes: Routes = [
-  { path: '', component: Login },
+  { path: 'login', component: Login },
   {
-    path: '',
-    component: Layout, 
-    children: [
-      { path: 'dashboard', component: Dashboard },
-      { path: 'cursos', component: Cursos },
-      { path: 'profesores', component: Profesores },
-      { path: 'alumnos', component: Alumnos },
-    ]
-  }
+  path: '',
+  component: Layout,
+  canMatch: [authGuard],
+  children: [
+    { path: 'dashboard', component: Dashboard },
+    { path: 'cursos', component: Cursos},
+    { path: 'profesores', component: Profesores, canActivate: [hasRoleGuard(['ADMIN'])] },
+    { path: 'alumnos', component: Alumnos, canActivate: [hasRoleGuard(['ADMIN', 'PROFESOR'])] },
+  ]
+}
+
 ];
