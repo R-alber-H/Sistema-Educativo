@@ -1,7 +1,7 @@
 <div class="container">
   <div class="column d-flex justify-content-between mt-3">
     <h4 class="fw-semibold">Profesores Registrados</h4>
-    <button class="btn btn-outline-primary"><i class="bi bi-plus me-2"></i>Registrar Profesor</button>
+    <button class="btn btn-outline-primary" (click)="abrirModal()"><i class="bi bi-plus me-2"></i>Registrar Profesor</button>
   </div>
 
   <div class="mt-3">
@@ -34,4 +34,5 @@
       </tbody>
     </table>
   </div>
+  <app-modal-registrar-profesor></app-modal-registrar-profesor>
 </div>

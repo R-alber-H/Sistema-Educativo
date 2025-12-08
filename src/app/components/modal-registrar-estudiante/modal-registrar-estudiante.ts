@@ -1,17 +1,17 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import {  Component, ViewChild, ElementRef  } from '@angular/core';
 
 @Component({
-  selector: 'app-modal-registrar-profesor',
+  selector: 'app-modal-registrar-estudiante',
   standalone: true,
   imports: [],
-  templateUrl: './modal-registrar-profesor.html',
-  styleUrl: './modal-registrar-profesor.css',
+  templateUrl: './modal-registrar-estudiante.html',
+  styleUrl: './modal-registrar-estudiante.css',
 })
-export class ModalRegistrarProfesor {
+export class ModalRegistrarEstudiante {
 
   @ViewChild('modal', { static: true }) modalElement!: ElementRef;
 
-   private modal: any;
+  private modal: any;
 
   abrirModal() {
     this.modal = new (window as any).bootstrap.Modal(this.modalElement.nativeElement);
@@ -23,5 +23,4 @@ export class ModalRegistrarProfesor {
       this.modal.hide();
     }
   }
-
 }
