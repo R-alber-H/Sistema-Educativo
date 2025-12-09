@@ -24,7 +24,7 @@
           <td>{{profesor.correo}}</td>
           <td>
             <div>
-              <button class="btn btn-warning btn-sm me-4"><i class="bi bi-pencil me-2"></i>Editar</button>
+              <button class="btn btn-warning btn-sm me-4" (click)="abrirModalEdicion(profesor)"><i class="bi bi-pencil me-2"></i>Editar</button>
               <button class="btn btn-danger btn-sm"><i class="bi bi-x-circle me-2"></i>Deshabilitar</button>
             </div>
           </td>
@@ -35,4 +35,5 @@
     </table>
   </div>
   <app-modal-registrar-profesor></app-modal-registrar-profesor>
+  <app-modal-editar-profesor></app-modal-editar-profesor>
 </div>
