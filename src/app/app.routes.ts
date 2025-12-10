@@ -17,8 +17,8 @@ export const routes: Routes = [
   children: [
     { path: 'dashboard', component: Dashboard },
     { path: 'cursos', component: Cursos},
-    { path: 'profesores', component: Profesores, canActivate: [hasRoleGuard(['ADMIN'])] },
-    { path: 'alumnos', component: Alumnos, canActivate: [hasRoleGuard(['ADMIN', 'PROFESOR'])] },
+    { path: 'profesores', component: Profesores, canActivate: [hasRoleGuard(['ADMINISTRADOR'])] },
+    { path: 'alumnos', component: Alumnos, canActivate: [hasRoleGuard(['ADMINISTRADOR', 'PROFESOR'])] },
   ]
 }
 

@@ -16,17 +16,19 @@ export class Login {
     router = inject(Router)
 
     formularioLogin = this.formBuilder.group({
-    email: this.formBuilder.control('', [Validators.required, Validators.email]),
+    correo: this.formBuilder.control('', [Validators.required, Validators.email]),
     password: this.formBuilder.control('', Validators.required)
   });
 
   login() {
-    const { email, password } = this.formularioLogin.value;
+  const { correo, password } = this.formularioLogin.value;
 
-    if (this.auth.login(email!, password!)) {
-      this.router.navigate(['dashboard'])
+  this.auth.login(correo!, password!).subscribe(ok => {
+    if (ok) {
+      this.router.navigate(['dashboard']);
     } else {
       alert('Credenciales incorrectas');
     }
-  }
+  });
+}
 }
