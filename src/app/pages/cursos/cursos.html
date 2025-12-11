@@ -1,37 +1,24 @@
-<div class="container " >
+<div class="container ">
   <div class="column d-flex justify-content-between mt-3">
     <h4 class="fw-semibold">Cursos Registrados</h4>
     <button class="btn btn-outline-primary" (click)="abrirModal()"><i class="bi bi-plus me-2"></i>Crear curso</button>
   </div>
 
 
-  <div class="row mt-5 d-flex justify-content-evenly border border-2 rounded-4 " style="background-color: #D0D0FE;">
-    <div class="card mt-3 mb-3" style="width: 18rem;">
-      <img src="curso_imagen.jpg" class="card-img-top mt-2" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Marketing</h5>
-        <p class="card-text">32 Alumnos Inscritos </p>
-        <button class="btn btn-danger btn-sm"><i class="bi bi-x-circle me-2"></i>Deshabilitar</button>
+ <div class="row mt-5 border border-2 rounded-4" style="background-color: #D0D0FE;">
+  @for(curso of cursos; track curso.id) {
+    <div class="col-12 col-md-3 mt-3 mb-3">
+      <div class="card ">
+        <img src="curso_imagen.jpg" class="card-img-top" alt="{{ curso.nombre }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ curso.nombre }}</h5>
+          <p class="card-text">Alumnos Inscritos</p>
+          <button class="btn btn-danger btn-sm" (click)="eliminar(curso.id)"><i class="bi bi-x-circle me-2"></i>Deshabilitar</button>
+        </div>
       </div>
     </div>
+  }
+</div>
 
-    <div class="card mt-3 mb-3" style="width: 18rem;">
-      <img src="curso_imagen.jpg" class="card-img-top mt-2" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">UI/UX</h5>
-        <p class="card-text">32 Alumnos Inscritos</p>
-        <button class="btn btn-danger btn-sm"><i class="bi bi-x-circle me-2"></i>Deshabilitar</button>
-      </div>
-    </div>
-
-    <div class="card mt-3 mb-3" style="width: 18rem;">
-      <img src="curso_imagen.jpg" class="card-img-top mt-2" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Diseño Web</h5>
-        <p class="card-text">32 Alumnos Inscritos</p>
-        <button class="btn btn-danger btn-sm"><i class="bi bi-x-circle me-2"></i>Deshabilitar</button>
-      </div>
-    </div>
-  </div>
   <app-modal-registrar-curso></app-modal-registrar-curso>
 </div>

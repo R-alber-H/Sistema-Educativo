@@ -17,7 +17,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary btn-sm" (click)="guardarCambios()">Registrar</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="crearCurso()" [disabled]="cursoFormulario.invalid">Registrar</button>
       </div>
     </div>
   </div>

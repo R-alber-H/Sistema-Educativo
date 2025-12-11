@@ -1,5 +1,6 @@
-import { Component, ViewChild, ElementRef, OnInit, inject  } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CursosService } from '../../services/cursos/cursos-service';
 
 @Component({
   selector: 'app-modal-registrar-curso',
@@ -8,37 +9,43 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   templateUrl: './modal-registrar-curso.html',
   styleUrl: './modal-registrar-curso.css',
 })
-export class ModalRegistrarCurso implements OnInit{
+export class ModalRegistrarCurso implements OnInit {
 
-   @ViewChild('modal', { static: true }) modalElement!: ElementRef;
+  @ViewChild('modal', { static: true }) modalElement!: ElementRef;
 
-   private modal: any;
+  private modal: any;
 
-   formularioBuilder = inject(FormBuilder);
+  formularioBuilder = inject(FormBuilder);
+  cursoService = inject(CursosService);
 
   cursoFormulario!: FormGroup;
 
-  ngOnInit(){
-      this.cursoFormulario = this.formularioBuilder.group({
+  ngOnInit() {
+    this.cursoFormulario = this.formularioBuilder.group({
       nombre: ['', Validators.required],
     });
   }
 
-   abrirModal() {
+  abrirModal() {
     this.modal = new (window as any).bootstrap.Modal(this.modalElement.nativeElement);
     this.modal.show();
   }
 
   cerrarModal() {
-    if (this.modal) {
-      this.modal.hide();
-    }
+    if (this.modal) this.modal.hide();
   }
 
-  guardarCambios() {
+  crearCurso() {
     if (this.cursoFormulario.valid) {
       console.log('Datos:', this.cursoFormulario.value);
-      this.cerrarModal();
+      this.cursoService.crearCurso(this.cursoFormulario.value)
+        .subscribe({
+          next: (res) => {
+            console.log('Curso creado:', res);
+            this.cerrarModal();
+          },
+          error: (err) => console.error('Error al crear curso:', err)
+        });
     } else {
       console.log('Formulario inválido');
     }
