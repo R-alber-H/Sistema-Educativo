@@ -1,7 +1,14 @@
+@if (usuario$ | async; as usuario) {
+
 <div class="container">
   <div class="column d-flex justify-content-between mt-3">
     <h4 class="fw-semibold">Alumnos Matriculados</h4>
-    <button class="btn btn-outline-primary" (click)="abrirModal()"><i class="bi bi-plus me-2"></i>Registrar Alumno</button>
+
+    @if (usuario.rol === 'ADMINISTRADOR') {
+    <button class="btn btn-outline-primary" (click)="abrirModal()">
+      <i class="bi bi-plus me-2"></i>Registrar Alumno
+    </button>
+    }
   </div>
 
   <div class="mt-3">
@@ -12,7 +19,9 @@
           <th scope="col">Nombre</th>
           <th scope="col">DNI</th>
           <th scope="col">Correo Electronico</th>
+          @if (usuario.rol === 'ADMINISTRADOR') {
           <th scope="col">Acciones</th>
+          }
         </tr>
       </thead>
       <tbody>
@@ -22,18 +31,26 @@
           <td>{{alumno.nombre}}</td>
           <td>{{alumno.dni}}</td>
           <td>{{alumno.correo}}</td>
+          @if (usuario.rol === 'ADMINISTRADOR') {
           <td>
-              <div>
-              <button class="btn btn-warning btn-sm me-4" (click)="abrirModalEdicion(alumno)"><i class="bi bi-pencil me-2"></i>Editar</button>
-              <button class="btn btn-danger btn-sm"><i class="bi bi-x-circle me-2"></i>Deshabilitar</button>
+            <div>
+              <button class="btn btn-warning btn-sm me-4" (click)="abrirModalEdicion(alumno)">
+                <i class="bi bi-pencil me-2"></i>Editar
+              </button>
+              <button class="btn btn-danger btn-sm">
+                <i class="bi bi-x-circle me-2"></i>Deshabilitar
+              </button>
             </div>
-          </td>
+          </td>}
         </tr>
         }
-
       </tbody>
     </table>
   </div>
+
   <app-modal-registrar-estudiante></app-modal-registrar-estudiante>
   <app-modal-editar-estudiante></app-modal-editar-estudiante>
+
 </div>
+
+}
