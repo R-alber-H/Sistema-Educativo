@@ -12,7 +12,9 @@
 
     <a routerLink="/dashboard" routerLinkActive="active" class="sidebar-link text-decoration-none p-2 mb-3"><i class="bi bi-people me-2"></i><span>Dashboard</span></a>
     
-    <a routerLink="/cursos" routerLinkActive="active" class="sidebar-link text-decoration-none p-2 mb-3"><i class="bi bi-journal-text me-2"></i><span>Cursos</span></a>
+    <a routerLink="/cursos" routerLinkActive="active" class="sidebar-link text-decoration-none p-2 mb-3"><i class="bi bi-journal-text me-2"></i><span>
+      {{ ( usuario.rol === 'ESTUDIANTE') ? 'Mis Cursos' : 'Cursos' }}
+    </span></a>
 
     @if (usuario.rol === 'ADMINISTRADOR') {
       <a routerLink="/profesores" routerLinkActive="active" class="sidebar-link text-decoration-none p-2 mb-3"><i class="bi bi-calendar-check me-2"></i><span>Profesores</span></a>
