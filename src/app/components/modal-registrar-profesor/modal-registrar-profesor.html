@@ -12,6 +12,11 @@
           </div>
 
           <div class="mb-3">
+            <label class="form-label fw-semibold">Ingresar Apellidos</label>
+            <input type="text" class="form-control form-control-sm" formControlName="apellido" placeholder="Caseres Paredes">
+          </div>
+
+          <div class="mb-3">
             <label class="form-label fw-semibold">Ingresar DNI</label>
             <input type="text" class="form-control form-control-sm" formControlName="dni" placeholder="12345678">
           </div>
@@ -25,7 +30,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary btn-sm" (click)="guardarCambios()">Registrar</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="crearProfesor()">Registrar</button>
       </div>
     </div>
   </div>
