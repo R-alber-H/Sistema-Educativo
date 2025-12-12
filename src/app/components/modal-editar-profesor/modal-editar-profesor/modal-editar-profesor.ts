@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ProfesoresService } from '../../../services/profesores/profesores-service';
 
 @Component({
   selector: 'app-modal-editar-profesor',
@@ -14,19 +15,26 @@ export class ModalEditarProfesor implements OnInit {
   private modal: any;
 
   formularioBuilder = inject(FormBuilder);
+  profesorService = inject(ProfesoresService)
 
   profesorFormulario!: FormGroup;
+  profesorActual: any;
 
   ngOnInit() {
     this.profesorFormulario = this.formularioBuilder.group({
       nombre: ['', Validators.required],
+      apellidos: ['', Validators.required],
+      idClase: ['', Validators.required]
     });
   }
 
   abrirModal(profesor?:any) {
+    this.profesorActual = profesor;
     if (profesor) {
       this.profesorFormulario.patchValue({
         nombre: profesor.nombre,
+        apellidos:profesor.apellidos,
+        idClase: profesor.clase.id
       });
     }
     this.modal = new (window as any).bootstrap.Modal(this.modalElement.nativeElement);
@@ -39,13 +47,19 @@ export class ModalEditarProfesor implements OnInit {
     }
   }
 
-  guardarCambios() {
+  editarDatos() {
     if (this.profesorFormulario.valid) {
-      console.log('Datos editados:', this.profesorFormulario.value);
-      this.cerrarModal();
+      const datosEditados = this.profesorFormulario.value;
+
+      this.profesorService.editarDatos(this.profesorActual.id, datosEditados).subscribe({
+        next: (res) => {
+          console.log('Datos actualizados', res);
+          this.cerrarModal();
+        },
+        error: (err) => console.error('Error al actualizar', err)
+      });
     } else {
       console.log('Formulario inválido');
     }
   }
-
 }

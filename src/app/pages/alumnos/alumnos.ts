@@ -1,5 +1,4 @@
 import { Component,inject,OnInit,ViewChild } from '@angular/core';
-import { AlumnosRegistrados } from '../../datosSimulados/alumnos';
 import { ModalRegistrarEstudiante } from "../../components/modal-registrar-estudiante/modal-registrar-estudiante";
 import { ModalEditarEstudiante } from "../../components/modal-editar-estudiante/modal-editar-estudiante/modal-editar-estudiante";
 import { AuthService } from '../../services/auth/auth-service';
@@ -20,7 +19,7 @@ export class Alumnos implements OnInit{
   
   usuario$ = this.auth.usuarioActual$;
   estudiantes : any[]=[];
-  alumnosRegistrados = AlumnosRegistrados;
+  
 
    @ViewChild(ModalRegistrarEstudiante) modalRegistro!: ModalRegistrarEstudiante;
    @ViewChild(ModalEditarEstudiante) modalEdicion!: ModalEditarEstudiante;
@@ -41,5 +40,13 @@ export class Alumnos implements OnInit{
    }
    abrirModalEdicion(estudiante:any){
     this.modalEdicion.abrirModal(estudiante);
+   }
+
+   eliminarEstudiante(id:number){
+    console.log("Intentando eliminar ID:", id);
+    this.estudianteService.eliminarEstudiante(id).subscribe({
+      next: () => console.log("estudiante eliminado"),
+      error: err => console.error("Error al eliminar", err)
+    });
    }
 }

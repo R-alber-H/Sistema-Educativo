@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild,inject } from '@angular/core';
-import { ProfesoresRegistrados } from '../../datosSimulados/profesores';
 import { ModalRegistrarProfesor } from "../../components/modal-registrar-profesor/modal-registrar-profesor";
 import { ModalEditarProfesor } from "../../components/modal-editar-profesor/modal-editar-profesor/modal-editar-profesor";
 import { ProfesoresService } from '../../services/profesores/profesores-service';
@@ -14,7 +13,6 @@ import { AsyncPipe } from '@angular/common';
 })
 export class Profesores implements OnInit{
   
-  // profesoresRegistrados = ProfesoresRegistrados;
 
    @ViewChild(ModalRegistrarProfesor) modalRegistro!: ModalRegistrarProfesor;
    @ViewChild(ModalEditarProfesor) modalEdicion!: ModalEditarProfesor;
@@ -35,13 +33,19 @@ export class Profesores implements OnInit{
       error: (err) => console.error('Error al traer profesores:', err)
     });
    }
-
-
+   
    abrirModal(){
     this.modalRegistro.abrirModal();
    }
 
    abrirModalEdicion(profesor:any){
     this.modalEdicion.abrirModal(profesor);
+   }
+
+   eliminarProfesor(id:number){
+    this.profesorService.eliminarProfesor(id).subscribe({
+      next: () => console.log("Profesor eliminado"),
+      error: err => console.error("Error al eliminar", err)
+    });
    }
 }
