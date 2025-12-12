@@ -4,6 +4,7 @@ import { ModalEditarProfesor } from "../../components/modal-editar-profesor/moda
 import { ProfesoresService } from '../../services/profesores/profesores-service';
 import { AuthService } from '../../services/auth/auth-service';
 import { AsyncPipe } from '@angular/common';
+import { SweetAlertService } from '../../sweetalert/sweetalert-service';
 
 @Component({
   selector: 'app-profesores',
@@ -44,7 +45,7 @@ export class Profesores implements OnInit{
 
    eliminarProfesor(id:number){
     this.profesorService.eliminarProfesor(id).subscribe({
-      next: () => console.log("Profesor eliminado"),
+      next: () =>SweetAlertService.exito("Profesor eliminado"),
       error: err => console.error("Error al eliminar", err)
     });
    }

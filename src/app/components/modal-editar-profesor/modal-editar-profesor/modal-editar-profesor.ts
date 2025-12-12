@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ProfesoresService } from '../../../services/profesores/profesores-service';
+import { SweetAlertService } from '../../../sweetalert/sweetalert-service';
 
 @Component({
   selector: 'app-modal-editar-profesor',
@@ -53,13 +54,13 @@ export class ModalEditarProfesor implements OnInit {
 
       this.profesorService.editarDatos(this.profesorActual.id, datosEditados).subscribe({
         next: (res) => {
-          console.log('Datos actualizados', res);
+          SweetAlertService.exito('Datos actualizados');
           this.cerrarModal();
         },
         error: (err) => console.error('Error al actualizar', err)
       });
     } else {
-      console.log('Formulario inválido');
+      SweetAlertService.exito('Formulario inválido');
     }
   }
 }

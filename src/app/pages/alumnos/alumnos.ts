@@ -4,6 +4,7 @@ import { ModalEditarEstudiante } from "../../components/modal-editar-estudiante/
 import { AuthService } from '../../services/auth/auth-service';
 import { AsyncPipe } from '@angular/common';
 import { EstudianteService } from '../../services/estudiante/estudiante-service';
+import { SweetAlertService } from '../../sweetalert/sweetalert-service';
 
 @Component({
   selector: 'app-alumnos',
@@ -45,7 +46,8 @@ export class Alumnos implements OnInit{
    eliminarEstudiante(id:number){
     console.log("Intentando eliminar ID:", id);
     this.estudianteService.eliminarEstudiante(id).subscribe({
-      next: () => console.log("estudiante eliminado"),
+      next: () =>
+        SweetAlertService.exito("estudiante eliminado"),
       error: err => console.error("Error al eliminar", err)
     });
    }

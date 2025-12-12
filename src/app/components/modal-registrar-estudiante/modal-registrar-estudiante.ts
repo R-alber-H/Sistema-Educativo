@@ -2,6 +2,7 @@ import {  Component, ViewChild, ElementRef, OnInit, inject  } from '@angular/cor
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EstudianteService } from '../../services/estudiante/estudiante-service';
 import { ClasesService } from '../../services/clases/clases-service';
+import { SweetAlertService } from '../../sweetalert/sweetalert-service';
 
 @Component({
   selector: 'app-modal-registrar-estudiante',
@@ -66,13 +67,13 @@ export class ModalRegistrarEstudiante implements OnInit {
       };
       console.log('datos a enviar:', datos);
       this.estudianteService.crearEstudiante(datos).subscribe({
-        next: resp => console.log("Usuario creado", resp),
+        next: resp => SweetAlertService.exito("EStudiante Registrado"),
         error: err => console.error("Error al crear", err)
       });
       this.estudianteFormulario.reset();
       this.cerrarModal();
     } else {
-      console.log('Formulario inválido');
+      SweetAlertService.error('Formulario inválido');
     }
   }
 }

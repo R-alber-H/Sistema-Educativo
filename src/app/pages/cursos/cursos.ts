@@ -3,6 +3,7 @@ import { ModalRegistrarCurso } from '../../components/modal-registrar-curso/moda
 import { CursosService } from '../../services/cursos/cursos-service';
 import { AuthService } from '../../services/auth/auth-service';
 import { AsyncPipe } from '@angular/common';
+import { SweetAlertService } from '../../sweetalert/sweetalert-service';
 
 @Component({
   selector: 'app-cursos',
@@ -39,7 +40,8 @@ export class Cursos implements OnInit {
 
   eliminar(id: number) {
   this.cursoService.eliminarCurso(id).subscribe({
-    next: () => console.log('Curso eliminado'),
+    next: () =>
+      SweetAlertService.exito('Curso eliminado'),
     error: (err) => console.error('Error al eliminar', err)
   });
 }

@@ -26,8 +26,6 @@ export class AuthService {
     }
   }
 
-  // -------------------------------------------------------------
-  // decodificar el token
   private decodeToken(token: string): any | null {
     try {
       const payload = token.split('.')[1];
@@ -36,7 +34,7 @@ export class AuthService {
       return null;
     }
   }
-  // -------------------------------------------------------------
+  
 
   login(correo: string, password: string) {
     return this.http.post<any>(this.API_URL, { correo, password }).pipe(

@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef, OnInit, inject } from '@angular/core'
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProfesoresService } from '../../services/profesores/profesores-service';
 import { ClasesService } from '../../services/clases/clases-service';
+import { SweetAlertService } from '../../sweetalert/sweetalert-service';
 
 @Component({
   selector: 'app-modal-registrar-profesor',
@@ -67,13 +68,13 @@ export class ModalRegistrarProfesor implements OnInit {
 
       console.log('datos a enviar:', datos);
       this.profesorService.crearProfesor(datos).subscribe({
-        next: resp => console.log("Usuario creado", resp),
+        next: resp => SweetAlertService.exito("Profesor Registrado"),
         error: err => console.error("Error al crear", err)
       });
       this.profesorFormulario.reset();
       this.cerrarModal();
     } else {
-      console.log('Formulario inválido');
+       SweetAlertService.error('Formulario inválido');
     }
   }
 

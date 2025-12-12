@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CursosService } from '../../services/cursos/cursos-service';
+import { SweetAlertService } from '../../sweetalert/sweetalert-service';
 
 @Component({
   selector: 'app-modal-registrar-curso',
@@ -41,14 +42,14 @@ export class ModalRegistrarCurso implements OnInit {
       this.cursoService.crearCurso(this.cursoFormulario.value)
         .subscribe({
           next: (res) => {
-            console.log('Curso creado:', res);
+            SweetAlertService.exito('Curso creado');
             this.cursoFormulario.reset();
             this.cerrarModal();
           },
           error: (err) => console.error('Error al crear curso:', err)
         });
     } else {
-      console.log('Formulario inválido');
+      SweetAlertService.error('Formulario inválido');
     }
   }
 }
