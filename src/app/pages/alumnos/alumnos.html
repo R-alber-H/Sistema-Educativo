@@ -19,22 +19,24 @@
           <th scope="col">Nombre</th>
           <th scope="col">DNI</th>
           <th scope="col">Correo Electronico</th>
+          <th scope="col">Ciclo</th>
           @if (usuario.rol === 'ADMINISTRADOR') {
           <th scope="col">Acciones</th>
           }
         </tr>
       </thead>
       <tbody>
-        @for (alumno of alumnosRegistrados; track alumno.codigo) {
+        @for (estudiante of estudiantes; track estudiante.id) {
         <tr class="text-center">
-          <th scope="row">{{alumno.codigo}}</th>
-          <td>{{alumno.nombre}}</td>
-          <td>{{alumno.dni}}</td>
-          <td>{{alumno.correo}}</td>
+          <th scope="row">{{estudiante.id}}</th>
+          <td>{{estudiante.nombre}} {{estudiante.apellidos}}</td>
+          <td>{{estudiante.dni}}</td>
+          <td>{{estudiante.correo}}</td>
+          <td>{{estudiante.clase.periodo}}</td>
           @if (usuario.rol === 'ADMINISTRADOR') {
           <td>
             <div>
-              <button class="btn btn-warning btn-sm me-4" (click)="abrirModalEdicion(alumno)">
+              <button class="btn btn-warning btn-sm me-4" (click)="abrirModalEdicion(estudiante)">
                 <i class="bi bi-pencil me-2"></i>Editar
               </button>
               <button class="btn btn-danger btn-sm">

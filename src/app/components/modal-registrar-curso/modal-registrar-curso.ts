@@ -42,6 +42,7 @@ export class ModalRegistrarCurso implements OnInit {
         .subscribe({
           next: (res) => {
             console.log('Curso creado:', res);
+            this.cursoFormulario.reset();
             this.cerrarModal();
           },
           error: (err) => console.error('Error al crear curso:', err)

@@ -1,20 +1,41 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild,inject } from '@angular/core';
 import { ProfesoresRegistrados } from '../../datosSimulados/profesores';
 import { ModalRegistrarProfesor } from "../../components/modal-registrar-profesor/modal-registrar-profesor";
 import { ModalEditarProfesor } from "../../components/modal-editar-profesor/modal-editar-profesor/modal-editar-profesor";
+import { ProfesoresService } from '../../services/profesores/profesores-service';
+import { AuthService } from '../../services/auth/auth-service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-profesores',
-  imports: [ModalRegistrarProfesor, ModalEditarProfesor],
+  imports: [ModalRegistrarProfesor, ModalEditarProfesor,AsyncPipe],
   templateUrl: './profesores.html',
   styleUrl: './profesores.css',
 })
-export class Profesores {
-
-  profesoresRegistrados = ProfesoresRegistrados;
+export class Profesores implements OnInit{
+  
+  // profesoresRegistrados = ProfesoresRegistrados;
 
    @ViewChild(ModalRegistrarProfesor) modalRegistro!: ModalRegistrarProfesor;
    @ViewChild(ModalEditarProfesor) modalEdicion!: ModalEditarProfesor;
+
+   private profesorService = inject(ProfesoresService);
+   private auth = inject(AuthService);
+
+   profesores : any[]=[];
+   usuario$ = this.auth.usuarioActual$;
+
+   ngOnInit(){
+       this.profesorService.profesores$.subscribe(p => this.profesores = p);
+       this.profesorService.obtenerProfesores().subscribe({
+      next: (data: any) => {
+        console.log('profesores desde backend:', data);
+        this.profesores = data;
+      },
+      error: (err) => console.error('Error al traer profesores:', err)
+    });
+   }
+
 
    abrirModal(){
     this.modalRegistro.abrirModal();

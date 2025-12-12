@@ -1,4 +1,4 @@
-<div #modal class="modal fade" tabindex="-1" id="modalRegistrarProfesor" >
+<div #modal class="modal fade" tabindex="-1" id="modalRegistrarProfesor">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -13,7 +13,8 @@
 
           <div class="mb-3">
             <label class="form-label fw-semibold">Ingresar Apellidos</label>
-            <input type="text" class="form-control form-control-sm" formControlName="apellido" placeholder="Caseres Paredes">
+            <input type="text" class="form-control form-control-sm" formControlName="apellido"
+              placeholder="Caseres Paredes">
           </div>
 
           <div class="mb-3">
@@ -23,9 +24,17 @@
 
           <div class="mb-3">
             <label class="form-label fw-semibold">Ingresar correo</label>
-            <input type="email" class="form-control form-control-sm" formControlName="correo" placeholder="juan@universidad.com">
+            <input type="email" class="form-control form-control-sm" formControlName="correo"
+              placeholder="juan@universidad.com">
           </div>
-         
+
+          <select class="form-select" formControlName="idClase">
+            <option value='' disabled>Selecciona una clase</option>
+            @for (clase of clases; track clase.id) {
+            <option [value]="clase.id">{{ clase.periodo }}</option>
+            }
+          </select>
+
         </form>
       </div>
       <div class="modal-footer">

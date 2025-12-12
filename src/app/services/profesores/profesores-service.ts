@@ -8,19 +8,22 @@ import { BehaviorSubject, tap } from 'rxjs';
 export class ProfesoresService {
 
   private http = inject(HttpClient);
-  private API_URL = 'http://melaproyectos.com:8085/api/usuarios';
+  private API_URL = 'http://melaproyectos.com:8085/api/usuarios?rol=PROFESOR';
   private listaProfesores$ = new BehaviorSubject<any[]>([]);
     profesores$ = this.listaProfesores$.asObservable();
 
   obtenerProfesores() {
-    return this.http.get(`${this.API_URL}`);
+    return this.http.get<any[]>(this.API_URL)
+    .pipe(
+      tap(profesores => this.listaProfesores$.next(profesores)) 
+    );
   }
 
   crearProfesor(profesor:any){
     return this.http.post(this.API_URL,profesor)
     .pipe(
-            tap(nuevoCurso => {
-              this.listaProfesores$.next([...this.listaProfesores$.value, nuevoCurso]);
+            tap(nuevoProfesor => {
+              this.listaProfesores$.next([...this.listaProfesores$.value, nuevoProfesor]);
             })
           );
   }

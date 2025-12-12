@@ -6,10 +6,15 @@
         <h5 class="modal-title text-primary">Registrar Alumno</h5>
       </div>
       <div class="modal-body">
-        <form [formGroup]="cursoFormulario">
+        <form [formGroup]="estudianteFormulario">
           <div class="mb-3">
             <label class="form-label fw-semibold">Ingresar Nombres</label>
             <input type="text" class="form-control form-control-sm" formControlName="nombre" placeholder="Maria">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Ingresar Apellidos</label>
+            <input type="text" class="form-control form-control-sm" formControlName="apellido" placeholder="Casas Medina">
           </div>
 
           <div class="mb-3">
@@ -21,12 +26,19 @@
             <label class="form-label fw-semibold">Ingresar correo</label>
             <input type="email" class="form-control form-control-sm" formControlName="correo" placeholder="maria@universidad.com">
           </div>
+
+          <select class="form-select" formControlName="idClase">
+            <option value='' disabled>Selecciona una clase</option>
+            @for (clase of clases; track clase.id) {
+            <option [value]="clase.id">{{ clase.periodo }}</option>
+            }
+          </select>
          
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary btn-sm" (click)="guardarCambios()">Registrar</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="crearEstudiante()">Registrar</button>
       </div>
     </div>
   </div>
