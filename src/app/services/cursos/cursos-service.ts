@@ -39,5 +39,13 @@ export class CursosService {
       })
     )
   }
+
+  obtenerMisCursos() {
+  return this.http.get<any[]>(`${this.API_URL}/me`)
+    .pipe(
+      tap(cursos => this.listaCursos$.next(cursos))
+    );
+}
+
   
 }

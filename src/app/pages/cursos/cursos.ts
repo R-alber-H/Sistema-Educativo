@@ -20,16 +20,18 @@ export class Cursos implements OnInit {
   cursos: any[] = [];
 
   ngOnInit() {
-    this.cursoService.cursos$.subscribe(c => this.cursos = c);
-    this.cursoService.obtenerCursos().subscribe({
-      next: (data: any) => {
-        console.log('Cursos desde backend:', data);
-        this.cursos = data;
-      },
+  this.cursoService.cursos$.subscribe(c => this.cursos = c);
 
-      error: (err) => console.error('Error al traer cursos:', err)
-    });
-  }
+  this.usuario$.subscribe(usuario => {
+    if (!usuario) return;
+    if (usuario.rol === 'ADMINISTRADOR') {
+      this.cursoService.obtenerCursos().subscribe();
+    } else {
+      this.cursoService.obtenerMisCursos().subscribe();
+    }
+  });
+}
+
 
   abrirModal() {
     this.modalRegistro.abrirModal();
