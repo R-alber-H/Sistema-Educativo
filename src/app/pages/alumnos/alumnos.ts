@@ -29,7 +29,6 @@ export class Alumnos implements OnInit{
       this.estudianteService.estudiantes$.subscribe(e => this.estudiantes = e);
       this.estudianteService.obtenerEstudiantes().subscribe({
         next: (data: any) => {
-        console.log('estudiantes desde backend:', data);
         this.estudiantes = data;
       },
       error: (err) => console.error('Error al traer estudiantes:', err)
@@ -44,7 +43,6 @@ export class Alumnos implements OnInit{
    }
 
    eliminarEstudiante(id:number){
-    console.log("Intentando eliminar ID:", id);
     this.estudianteService.eliminarEstudiante(id).subscribe({
       next: () =>
         SweetAlertService.exito("estudiante eliminado"),

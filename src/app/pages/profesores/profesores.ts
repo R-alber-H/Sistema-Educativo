@@ -28,7 +28,6 @@ export class Profesores implements OnInit{
        this.profesorService.profesores$.subscribe(p => this.profesores = p);
        this.profesorService.obtenerProfesores().subscribe({
       next: (data: any) => {
-        console.log('profesores desde backend:', data);
         this.profesores = data;
       },
       error: (err) => console.error('Error al traer profesores:', err)
